@@ -1,0 +1,142 @@
+.home {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  /* Gradient background */
+  background: linear-gradient(135deg, #e0f2fe, #c7d2fe);
+}
+
+/* Content above blobs */
+.home-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+/* TEXT */
+.name {
+  font-size: 55px;
+  font-weight: bold;
+  margin: 40px 0;
+}
+
+.home-content h2 {
+  color: #030813ec;
+  margin-bottom: 30px;
+  margin: 40px 0;
+}
+
+.home-content p {
+  color: #555;
+  max-width: 500px;
+  text-align: center;
+  margin: 40px 0;
+}
+
+/* SOCIAL ICONS */
+.social-icons {
+  margin-bottom: 25px;
+}
+
+.social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: white;
+  color: #333;
+  font-size: 20px;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  background-color: #007bff;
+  color: white;
+  transform: translateY(-4px) scale(1.1);
+}
+
+/* BUTTONS */
+.home-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.btn {
+  padding: 12px 22px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.btn.primary {
+  
+  
+  border: 2px solid #007bff;
+  background-color: #007bff;
+  border-radius: 40px;
+  color: white;
+}
+
+.btn.primary:hover {
+  background: #007bff;
+  color: white;
+}
+
+.btn.secondary {
+  border: 2px solid #007bff;
+  color: #007bff;
+  border-radius: 40px;
+}
+
+.btn.secondary:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+/* BLOBS */
+.blob {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.6;
+  animation: float 15s infinite linear;
+}
+
+.blob1 {
+  top: 10%;
+  left: 10%;
+  background: #93c5fd;
+}
+
+.blob2 {
+  bottom: 10%;
+  right: 10%;
+  background: #c4b5fd;
+  animation-duration: 18s;
+}
+
+/* ANIMATION */
+@keyframes float {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.2) translate(40px, 40px);
+  }
+  100% {
+    transform: scale(1) translate(0, 0);
+  }
+}
