@@ -67,17 +67,17 @@ export default function About() {
           <div className="stats-section">
 
             <div className="stat-card">
-              <div className="stat-number">50+</div>
+              <div className="stat-number">10+</div>
               <div className="stat-label">Projects</div>
             </div>
 
             <div className="stat-card">
-              <div className="stat-number">5+</div>
+              <div className="stat-number">1+</div>
               <div className="stat-label">Years</div>
             </div>
 
             <div className="stat-card">
-              <div className="stat-number">30+</div>
+              <div className="stat-number">10+</div>
               <div className="stat-label">Clients</div>
             </div>
 
