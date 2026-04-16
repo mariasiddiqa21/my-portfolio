@@ -22,3 +22,19 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+# React
+node_modules/
+dist/
+build/
+
+# Environment
+.env
+
+# .NET
+bin/
+obj/
+.vs/
+
+# OS files
+.DS_Store
+Thumbs.db
