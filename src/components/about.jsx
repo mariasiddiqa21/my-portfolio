@@ -1,5 +1,5 @@
 import React from "react";
-import "./About.css";
+import "./about.css";
 import mariaimg from "../assets/mariaimg.jpeg";
 
 // Icons

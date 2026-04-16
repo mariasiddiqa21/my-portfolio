@@ -1,5 +1,5 @@
 import React from "react";
-import "./Home.css";
+import "./home.css";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 export default function Home() {

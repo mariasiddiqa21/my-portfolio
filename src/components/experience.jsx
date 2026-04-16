@@ -1,5 +1,5 @@
 import React from "react";
-import "./Experience.css";
+import "./experience.css";
 import { FaBriefcase, FaGraduationCap } from "react-icons/fa";
 
 export default function Experience() {
