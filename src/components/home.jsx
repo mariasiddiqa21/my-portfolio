@@ -4,6 +4,7 @@ import { EMAIL, GITHUB, LINKEDIN, WHATSAPP_LINK } from "../site";
 function SiteMock() {
   return (
     <div className="mock" aria-hidden="true">
+      <div className="mock-frame">
       <div className="mock-bar">
         <span />
         <span />
@@ -42,6 +43,7 @@ function SiteMock() {
           <span>Open today until 11 pm</span>
           <span>Gulberg, Lahore</span>
         </div>
+      </div>
       </div>
       <p className="mock-note">Sample design with a made-up business name</p>
     </div>

@@ -8,8 +8,11 @@ import Skills from "./components/skills";
 import Experience from "./components/experience";
 import Contact from "./components/contact";
 import Footer from "./components/footer";
+import { useReveal } from "./hooks";
 
 export default function App() {
+  useReveal();
+
   return (
     <>
       <Header />
