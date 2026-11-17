@@ -1,88 +1,40 @@
-import React from "react";
-import "./about.css";
 import mariaimg from "../assets/mariaimg.jpeg";
-
-// Icons
-import {
-  FaHtml5,
-  FaCss3Alt,
-  FaJs,
-  FaReact,
-  FaNodeJs,
-  FaGithub,
-} from "react-icons/fa";
-
-import { SiMongodb, SiTailwindcss, SiExpress } from "react-icons/si";
-
-const techStack = [
-  { icon: <FaHtml5 color="#e34c26" />, name: "HTML" },
-  { icon: <FaCss3Alt color="#264de4" />, name: "CSS" },
-  { icon: <FaJs color="#f0db4f" />, name: "JavaScript" },
-  { icon: <FaReact color="#61DBFB" />, name: "React" },
-  { icon: <FaNodeJs color="#3C873A" />, name: "Node.js" },
-  { icon: <SiExpress color="#000000" />, name: "Express" },
-  { icon: <SiMongodb color="#4DB33D" />, name: "MongoDB" },
-  { icon: <FaGithub color="#000" />, name: "GitHub" },
-  { icon: <SiTailwindcss color="#38BDF8" />, name: "Tailwind" },
-];
 
 export default function About() {
   return (
-    <section id="about" className="about">
-      <div className="about-container">
-
-        {/* LEFT IMAGE */}
-        <div className="about-image">
-          <div className="about-image-bg"></div>
-          <img src={mariaimg} alt="Maria" />
+    <section id="about" className="section section-tint">
+      <div className="container about-grid">
+        <div className="about-photo">
+          <img src={mariaimg} alt="Maria Siddiqa" loading="lazy" />
         </div>
 
-        {/* RIGHT CONTENT */}
-        <div className="about-content">
-
-          <h2>About Me</h2>
-
+        <div className="about-copy">
+          <h2>Hi, I'm Maria</h2>
           <p>
-            I’m a dedicated Full Stack Developer and Creative Designer with a passion for building modern, responsive and user-friendly web applications.
-            I focus on clean code, smooth UI/UX and continuous learning.
+            I'm a full stack developer and designer in Lahore. I build
+            websites that are simple to use, quick to load and easy for a
+            business owner to keep up to date.
+          </p>
+          <p>
+            I work as a developer at Kodesinc and Kodexbyte, and I'm studying
+            BS Computer Science at NUML. Alongside that, I take on website
+            projects for small local businesses.
           </p>
 
-          {/* 🔥 TECH STACK FIRST */}
-          <div className="tech-section">
-            <h3>Tech Stack</h3>
-
-            <div className="slider">
-              <div className="slide-track">
-                {techStack.concat(techStack).map((tech, index) => (
-                  <div className="tech-item" key={index}>
-                    <div className="icon">{tech.icon}</div>
-                    <p>{tech.name}</p>
-                  </div>
-                ))}
-              </div>
+          <dl className="facts">
+            <div>
+              <dt>10+</dt>
+              <dd>projects built</dd>
             </div>
-          </div>
-
-          {/* 🔥 STATS AFTER TECH */}
-          <div className="stats-section">
-
-            <div className="stat-card">
-              <div className="stat-number">10+</div>
-              <div className="stat-label">Projects</div>
+            <div>
+              <dt>10+</dt>
+              <dd>clients</dd>
             </div>
-
-            <div className="stat-card">
-              <div className="stat-number">1+</div>
-              <div className="stat-label">Years</div>
+            <div>
+              <dt>1+</dt>
+              <dd>year working professionally</dd>
             </div>
-
-            <div className="stat-card">
-              <div className="stat-number">10+</div>
-              <div className="stat-label">Clients</div>
-            </div>
-
-          </div>
-
+          </dl>
         </div>
       </div>
     </section>

@@ -1,118 +1,125 @@
-import React, { useRef } from "react";
-import "./contact.css";
+import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
-
 import {
   FaEnvelope,
   FaPhone,
   FaMapMarkerAlt,
   FaPaperPlane,
+  FaWhatsapp,
 } from "react-icons/fa";
+import { EMAIL, PHONE_DISPLAY, WHATSAPP_LINK } from "../site";
 
 export default function Contact() {
   const form = useRef();
+  const [status, setStatus] = useState({ type: "idle", text: "" });
 
   const sendEmail = (e) => {
     e.preventDefault();
+    setStatus({ type: "sending", text: "Sending your message..." });
 
     emailjs
       .sendForm(
-        "service_2zykl7b",     // 🔥 replace
-        "template_oh5zuqi",    // 🔥 replace
+        "service_2zykl7b",
+        "template_oh5zuqi",
         form.current,
-        "vw3VmCYzS5nDTfDHV"      // 🔥 replace
+        "vw3VmCYzS5nDTfDHV"
       )
       .then(
         () => {
-          alert("Message sent successfully ✅");
-          form.current.reset(); // clear form
+          setStatus({
+            type: "success",
+            text: "Message sent. I'll reply by email soon.",
+          });
+          form.current.reset();
         },
         (error) => {
-          alert("Failed to send ❌");
           console.log(error);
+          setStatus({
+            type: "error",
+            text: "The message did not send. Try again, or message me on WhatsApp.",
+          });
         }
       );
   };
 
   return (
-    <section id="contact" className="contact-section">
-      <h2>Get In Touch</h2>
-
-      <p className="subtitle">
-        Have a project in mind or want to collaborate? I'd love to hear from you!
-      </p>
-
-      <div className="contact-container">
-
-        {/* LEFT SIDE */}
-        <div className="contact-left">
-
-          <h3>Let's Talk</h3>
-
-          <p className="desc">
-            
-            Whether you have a question, want to start a project, or simply want to connect, feel free to reach out. I'm always open to discussing new projects and opportunities.
+    <section id="contact" className="section">
+      <div className="container">
+        <div className="section-head">
+          <h2>Tell me about your business</h2>
+          <p>
+            Write a few lines about what you need, or message me on WhatsApp.
+            I reply to every message.
           </p>
-
-          <div className="contact-item">
-            <div className="icon-box"><FaEnvelope /></div>
-            <div>
-              <h4>Email</h4>
-              <p>mariasiddiqua21@gmail.com</p>
-            </div>
-          </div>
-
-          <div className="contact-item">
-            <div className="icon-box"><FaPhone /></div>
-            <div>
-              <h4>Phone</h4>
-              <p>+92 336 4111054</p>
-            </div>
-          </div>
-
-          <div className="contact-item">
-            <div className="icon-box"><FaMapMarkerAlt /></div>
-            <div>
-              <h4>Location</h4>
-              <p>Lahore, Pakistan</p>
-            </div>
-          </div>
-
-
-          <div className="working-hours-container">
-        <div className="working-hours"> 
-          <h3>Working Hours</h3> 
-          <p>Monday - Friday: 9:00 AM - 6:00 PM</p> 
-          <p>Weekend: Available for urgent projects</p> 
-          </div> 
-          </div>
-          </div>
-
-        {/* RIGHT SIDE FORM */}
-        <div className="contact-right">
-
-          <form ref={form} onSubmit={sendEmail} className="contact-form">
-
-            <label>Name</label>
-            <input type="text" name="name" placeholder="Your name" required />
-
-            <label>Email</label>
-            <input type="email" name="email" placeholder="your.email@example.com" required />
-
-            <label>Subject</label>
-            <input type="text" name="subject" placeholder="How can I help?" required />
-
-            <label>Message</label>
-            <textarea name="message" placeholder="Tell me about your project..." rows="5" required></textarea>
-
-            <button type="submit">
-              <FaPaperPlane /> Send Message
-            </button>
-
-          </form>
-
         </div>
 
+        <div className="contact-grid">
+          <div className="contact-info">
+            <a
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn-primary"
+            >
+              <FaWhatsapp aria-hidden="true" /> Message me on WhatsApp
+            </a>
+
+            <ul className="contact-list">
+              <li>
+                <FaEnvelope aria-hidden="true" />
+                <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+              </li>
+              <li>
+                <FaPhone aria-hidden="true" />
+                <span>{PHONE_DISPLAY}</span>
+              </li>
+              <li>
+                <FaMapMarkerAlt aria-hidden="true" />
+                <span>Lahore, Pakistan</span>
+              </li>
+            </ul>
+
+            <p className="hours">
+              Monday to Friday, 9 am to 6 pm. Weekends for urgent projects.
+            </p>
+          </div>
+
+          <form ref={form} onSubmit={sendEmail} className="contact-form">
+            <label htmlFor="name">Name</label>
+            <input id="name" type="text" name="name" required />
+
+            <label htmlFor="email">Email</label>
+            <input id="email" type="email" name="email" required />
+
+            <label htmlFor="subject">Business name and type</label>
+            <input
+              id="subject"
+              type="text"
+              name="subject"
+              placeholder="For example: Gulberg Café"
+              required
+            />
+
+            <label htmlFor="message">What do you need?</label>
+            <textarea id="message" name="message" rows="5" required />
+
+            <button
+              type="submit"
+              className="btn btn-primary"
+              disabled={status.type === "sending"}
+            >
+              <FaPaperPlane aria-hidden="true" /> Send message
+            </button>
+
+            <p
+              className={`form-status ${status.type}`}
+              role="status"
+              aria-live="polite"
+            >
+              {status.text}
+            </p>
+          </form>
+        </div>
       </div>
     </section>
   );

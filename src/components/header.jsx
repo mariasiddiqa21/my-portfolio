@@ -1,26 +1,51 @@
-import React from "react";
-import { Navbar, Nav, Container } from "react-bootstrap";
-import "./header.css"; // import custom CSS
+import { useState } from "react";
+import { FaWhatsapp } from "react-icons/fa";
+import { WHATSAPP_LINK } from "../site";
+
+const links = [
+  { href: "#projects", label: "Work" },
+  { href: "#services", label: "Services" },
+  { href: "#about", label: "About" },
+  { href: "#experience", label: "Experience" },
+  { href: "#contact", label: "Contact" },
+];
 
 export default function Header() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <Navbar bg="light" variant="light" expand="lg" sticky="top" className="custom-navbar">
-      <Container>
-        <Navbar.Brand href="#home" className="brand">
-          Portfolio
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto nav-links">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#about">About</Nav.Link>
-            <Nav.Link href="#skills">Skills</Nav.Link>
-            <Nav.Link href="#experience">Experience</Nav.Link>
-            <Nav.Link href="#projects">Projects</Nav.Link>
-            <Nav.Link href="#contact">Contact</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <header className="site-header">
+      <div className="container header-inner">
+        <a href="#home" className="brand" onClick={() => setOpen(false)}>
+          Maria Siddiqa
+        </a>
+
+        <button
+          type="button"
+          className="menu-toggle"
+          aria-expanded={open}
+          aria-controls="site-nav"
+          onClick={() => setOpen(!open)}
+        >
+          {open ? "Close" : "Menu"}
+        </button>
+
+        <nav id="site-nav" className={open ? "site-nav is-open" : "site-nav"}>
+          {links.map((l) => (
+            <a key={l.href} href={l.href} onClick={() => setOpen(false)}>
+              {l.label}
+            </a>
+          ))}
+          <a
+            href={WHATSAPP_LINK}
+            target="_blank"
+            rel="noreferrer"
+            className="nav-cta"
+          >
+            <FaWhatsapp aria-hidden="true" /> WhatsApp me
+          </a>
+        </nav>
+      </div>
+    </header>
   );
 }

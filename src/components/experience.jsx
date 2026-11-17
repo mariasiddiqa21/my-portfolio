@@ -1,72 +1,52 @@
-import React from "react";
-import "./experience.css";
 import { FaBriefcase, FaGraduationCap } from "react-icons/fa";
+
+const items = [
+  {
+    icon: <FaBriefcase aria-hidden="true" />,
+    title: "Full Stack Developer",
+    place: "Kodesinc",
+    when: "Present, on-site",
+    text: "Building web applications with React and a back end, with clean, easy-to-use interfaces.",
+  },
+  {
+    icon: <FaBriefcase aria-hidden="true" />,
+    title: "Web Developer",
+    place: "Kodexbyte",
+    when: "Present, remote",
+    text: "Building responsive websites and connecting the front end to the back end on real client projects.",
+  },
+  {
+    icon: <FaGraduationCap aria-hidden="true" />,
+    title: "BS Computer Science",
+    place: "NUML University",
+    when: "2024 to 2028",
+    text: "Studying software development, data structures and modern web technologies.",
+  },
+];
 
 export default function Experience() {
   return (
-    <section id="experience" className="experience-section">
-
-      <h2>Experience & Education</h2>
-      <p className="subtitle">
-        My professional journey and academic background
-      </p>
-
-      <div className="timeline">
-
-        {/* 1️⃣ Kodesinc */}
-        <div className="timeline-item">
-          <div className="timeline-icon">
-            <FaBriefcase />
-          </div>
-
-          <div className="timeline-content">
-            <h3>Full Stack Developer</h3>
-            <span className="company">Kodesinc</span>
-            <span className="date">Present (on-site)</span>
-
-            <p>
-              Working as a full stack developer building scalable web applications
-              with modern technologies and clean UI/UX.
-            </p>
-          </div>
+    <section id="experience" className="section section-tint">
+      <div className="container">
+        <div className="section-head">
+          <h2>Experience and education</h2>
         </div>
 
-        {/* 2️⃣ Kodexbyte */}
-        <div className="timeline-item">
-          <div className="timeline-icon">
-            <FaBriefcase />
-          </div>
-
-          <div className="timeline-content">
-            <h3>Web Developer</h3>
-            <span className="company">Kodexbyte</span>
-            <span className="date">Present (remote)</span>
-
-            <p>
-              Developed responsive websites and worked on frontend and backend
-              integration for real-world projects.
-            </p>
-          </div>
-        </div>
-
-        {/* 3️⃣ Education */}
-        <div className="timeline-item">
-          <div className="timeline-icon edu">
-            <FaGraduationCap />
-          </div>
-
-          <div className="timeline-content">
-            <h3>BS Computer Science</h3>
-            <span className="company">NUML University</span>
-            <span className="date">2024 - 2028</span>
-
-            <p>
-              Currently pursuing BSCS with focus on software development,
-              data structures and modern technologies.
-            </p>
-          </div>
-        </div>
-
+        <ol className="timeline">
+          {items.map((i) => (
+            <li key={i.title}>
+              <span className="timeline-dot">{i.icon}</span>
+              <div className="timeline-card">
+                <div className="timeline-top">
+                  <h3>{i.title}</h3>
+                  <span className="timeline-when">{i.when}</span>
+                </div>
+                <p className="timeline-place">{i.place}</p>
+                <p>{i.text}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );

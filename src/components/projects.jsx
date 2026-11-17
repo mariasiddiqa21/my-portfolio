@@ -1,5 +1,3 @@
-import React from "react";
-import "./projects.css";
 import { FaGithub } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
 
@@ -8,98 +6,88 @@ import portfolioImg from "../assets/portfolio.png";
 import djangoImg from "../assets/django.png";
 import reactContactImg from "../assets/contactreact.png";
 
-
+// Add a `live` URL to any project and a "View live site" button appears.
 const projectsData = [
   {
-    title: "Food App UI",
-    desc: "A modern and responsive food application UI with clean design, menu sections and user-friendly layout.",
-    tech: ["React", "CSS", "UI/UX"],
+    title: "Restaurant website",
+    kind: "Menu and ordering layout",
+    desc: "A restaurant site with menu sections, dish cards and a clear order button, built to read well on a phone.",
+    tech: ["React", "CSS", "UI design"],
     img: foodImg,
-    live: "#",
+    live: "",
     code: "https://github.com/mariasiddiqa21/resturant-UI",
   },
-
   {
-    title: "Portfolio Website",
-    desc: "Personal portfolio website to showcase my skills, projects and experience with a modern UI design.",
-    tech: ["React", "CSS"],
-    img: portfolioImg,
-    live: "#",
-    code: "https://github.com/mariasiddiqa21/my-portfolio",
-  },
-
-  {
-    title: "Contact Book (Django)",
-    desc: "A full stack contact management system built with Django where users can add, update and delete contacts.",
-    tech: ["Django", "Python", "SQLite"],
-    img: djangoImg,
-    live: "#",
-    code: "https://github.com/mariasiddiqa21/django-contactbook",
-  },
-
-  {
-    title: "Contact Book (React + Python)",
-    desc: "A contact book application with React frontend and Python backend allowing real-time data handling and API integration.",
+    title: "Contact book (React + Python)",
+    kind: "Full stack app",
+    desc: "A React front end connected to a Python API. Add, search and edit contacts with data saved on the server.",
     tech: ["React", "Python", "API"],
     img: reactContactImg,
-    live: "#",
+    live: "",
     code: "https://github.com/mariasiddiqa21/backend-contactbook",
+  },
+  {
+    title: "Contact book (Django)",
+    kind: "Full stack app",
+    desc: "A Django app where users add, update and delete contacts, with a SQLite database behind it.",
+    tech: ["Django", "Python", "SQLite"],
+    img: djangoImg,
+    live: "",
+    code: "https://github.com/mariasiddiqa21/django-contactbook",
+  },
+  {
+    title: "This portfolio",
+    kind: "Personal site",
+    desc: "The site you are on, built with React and Vite and hosted on Netlify.",
+    tech: ["React", "Vite", "CSS"],
+    img: portfolioImg,
+    live: "",
+    code: "https://github.com/mariasiddiqa21/my-portfolio",
   },
 ];
 
-
 export default function Projects() {
   return (
-    <section id="projects" className="projects-section">
+    <section id="projects" className="section">
+      <div className="container">
+        <div className="section-head">
+          <h2>Selected work</h2>
+          <p>
+            Websites and apps I have built. Each card links to the code, and to
+            the live site where there is one.
+          </p>
+        </div>
 
-      <h2>My Projects</h2>
-      <p>A showcase of my recent work across web development, mobile apps, and design</p>
-
-      <div className="projects-grid">
-        {projectsData.map((project, index) => (
-          <div className="project-card" key={index}>
-
-            {/* Image */}
-            <img src={project.img} alt={project.title} />
-
-            {/* Content */}
-            <div className="project-content">
-              <h3>{project.title}</h3>
-              <p>{project.desc}</p>
-
-              {/* Tech stack */}
-              <div className="tech-tags">
-                {project.tech.map((t, i) => (
-                  <span key={i}>{t}</span>
-                ))}
+        <div className="project-grid">
+          {projectsData.map((p) => (
+            <article className="project" key={p.title}>
+              <div className="project-shot">
+                <img src={p.img} alt={`${p.title} screenshot`} loading="lazy" />
               </div>
-
-              <div className="project-buttons">
-                <a
-    href={project.live}
-    target="_blank"
-    rel="noreferrer"
-    className="btn live"
-  >
-    <FiExternalLink />
-  </a>
-
-  <a
-    href={project.code}
-    target="_blank"
-    rel="noreferrer"
-    className="btn github"
-  >
-    <FaGithub />
-  </a>
-</div>
-
-            </div>
-
-          </div>
-        ))}
+              <div className="project-body">
+                <p className="project-kind">{p.kind}</p>
+                <h3>{p.title}</h3>
+                <p>{p.desc}</p>
+                <ul className="tags">
+                  {p.tech.map((t) => (
+                    <li key={t}>{t}</li>
+                  ))}
+                </ul>
+                <div className="project-links">
+                  {p.live && (
+                    <a href={p.live} target="_blank" rel="noreferrer">
+                      <FiExternalLink aria-hidden="true" /> View live site
+                    </a>
+                  )}
+                  <a href={p.code} target="_blank" rel="noreferrer">
+                    <FaGithub aria-hidden="true" /> View code
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
-
     </section>
   );
 }

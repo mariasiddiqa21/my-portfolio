@@ -1,27 +1,29 @@
-// src/App.jsx
-import React from "react";
-import Header from "./components/header"; // correct path!
+import Header from "./components/header";
 import Home from "./components/home";
+import Projects from "./components/projects";
+import Services from "./components/services";
+import Process from "./components/process";
 import About from "./components/about";
 import Skills from "./components/skills";
-import Projects from "./components/projects";
 import Experience from "./components/experience";
 import Contact from "./components/contact";
 import Footer from "./components/footer";
 
-function App() {
+export default function App() {
   return (
-    <div>
+    <>
       <Header />
-      <Home />
-      <About />
-      <Skills />
-      <Projects />
-      <Experience />
-      <Contact />
+      <main>
+        <Home />
+        <Projects />
+        <Services />
+        <Process />
+        <About />
+        <Skills />
+        <Experience />
+        <Contact />
+      </main>
       <Footer />
-    </div>
+    </>
   );
 }
-
-export default App;
